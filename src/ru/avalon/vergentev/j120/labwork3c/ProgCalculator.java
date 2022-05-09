@@ -60,12 +60,16 @@ public class ProgCalculator extends JFrame {
         add(rightPanel, panelRightPosition);
         rightPanel.setLayout(new GridLayout(4, 1));
         rightPanel.add(buttonHEX);
+        buttonHEX.setBackground(Color.PINK);
         buttonHEX.addActionListener(e -> {buttonHEX();});
         rightPanel.add(buttonDEC);
+        buttonDEC.setBackground(Color.PINK);
         buttonDEC.addActionListener(e -> {buttonDEC();});
         rightPanel.add(buttonOCT);
+        buttonOCT.setBackground(Color.PINK);
         buttonOCT.addActionListener(e -> {buttonOCT();});
         rightPanel.add(buttonBIN);
+        buttonBIN.setBackground(Color.PINK);
         buttonBIN.addActionListener(e -> {buttonBIN();});
 
         GridBagConstraints equalButtonPosition = new GridBagConstraints(0,2,0,1,1,1, CENTER,1, new Insets(0,0,0,0),0,40);
@@ -131,30 +135,22 @@ public class ProgCalculator extends JFrame {
         buttonNOT.addActionListener(e -> {buttonNOT();});
         panel.add(buttonAddition);
         buttonAddition.addActionListener(e -> {buttonAddition();});
-    }
-
-    private void buttonDigit (String symbol) {
-        if (poleString.equals("0")) {
-            poleString = symbol;
-        } else {
-            poleString = poleString + symbol;
-        }
-        textLabel.setText(poleString);
-    }
-
-    private void buttonBIN() {
-    }
-
-    private void buttonOCT() {
-        
-    }
-
-    private void buttonDEC() {
-        
-    }
-
-    private void buttonHEX() {
-        
+        button0.setVisible(false);
+        button1.setVisible(false);
+        button2.setVisible(false);
+        button3.setVisible(false);
+        button4.setVisible(false);
+        button5.setVisible(false);
+        button6.setVisible(false);
+        button7.setVisible(false);
+        button8.setVisible(false);
+        button9.setVisible(false);
+        buttonA.setVisible(false);
+        buttonB.setVisible(false);
+        buttonC.setVisible(false);
+        buttonD.setVisible(false);
+        buttonE.setVisible(false);
+        buttonF.setVisible(false);
     }
 
     private void buttonDivision() {
@@ -203,5 +199,106 @@ public class ProgCalculator extends JFrame {
 
     private void buttonSHR() {
         
+    }
+
+    private void buttonHEX() {
+        buttonHEX.setBackground(Color.RED);
+        buttonDEC.setBackground(Color.PINK);
+        buttonOCT.setBackground(Color.PINK);
+        buttonBIN.setBackground(Color.PINK);
+        button0.setVisible(true);
+        button1.setVisible(true);
+        button2.setVisible(true);
+        button3.setVisible(true);
+        button4.setVisible(true);
+        button5.setVisible(true);
+        button6.setVisible(true);
+        button7.setVisible(true);
+        button8.setVisible(true);
+        button9.setVisible(true);
+        buttonA.setVisible(true);
+        buttonB.setVisible(true);
+        buttonC.setVisible(true);
+        buttonD.setVisible(true);
+        buttonE.setVisible(true);
+        buttonF.setVisible(true);
+    }
+
+    private void buttonDEC() {
+        buttonHEX.setBackground(Color.PINK);
+        buttonDEC.setBackground(Color.RED);
+        buttonOCT.setBackground(Color.PINK);
+        buttonBIN.setBackground(Color.PINK);
+        button0.setVisible(true);
+        button1.setVisible(true);
+        button2.setVisible(true);
+        button3.setVisible(true);
+        button4.setVisible(true);
+        button5.setVisible(true);
+        button6.setVisible(true);
+        button7.setVisible(true);
+        button8.setVisible(true);
+        button9.setVisible(true);
+        buttonA.setVisible(false);
+        buttonB.setVisible(false);
+        buttonC.setVisible(false);
+        buttonD.setVisible(false);
+        buttonE.setVisible(false);
+        buttonF.setVisible(false);
+    }
+
+    private void buttonOCT() {
+        buttonHEX.setBackground(Color.PINK);
+        buttonDEC.setBackground(Color.PINK);
+        buttonOCT.setBackground(Color.RED);
+        buttonBIN.setBackground(Color.PINK);
+        button0.setVisible(true);
+        button1.setVisible(true);
+        button2.setVisible(true);
+        button3.setVisible(true);
+        button4.setVisible(true);
+        button5.setVisible(true);
+        button6.setVisible(true);
+        button7.setVisible(true);
+        button8.setVisible(false);
+        button9.setVisible(false);
+        buttonA.setVisible(false);
+        buttonB.setVisible(false);
+        buttonC.setVisible(false);
+        buttonD.setVisible(false);
+        buttonE.setVisible(false);
+        buttonF.setVisible(false);
+    }
+
+    private void buttonBIN() {
+        buttonHEX.setBackground(Color.PINK);
+        buttonDEC.setBackground(Color.PINK);
+        buttonOCT.setBackground(Color.PINK);
+        buttonBIN.setBackground(Color.RED);
+        button0.setVisible(true);
+        button1.setVisible(true);
+        button2.setVisible(false);
+        button3.setVisible(false);
+        button4.setVisible(false);
+        button5.setVisible(false);
+        button6.setVisible(false);
+        button7.setVisible(false);
+        button8.setVisible(false);
+        button9.setVisible(false);
+        buttonA.setVisible(false);
+        buttonB.setVisible(false);
+        buttonC.setVisible(false);
+        buttonD.setVisible(false);
+        buttonE.setVisible(false);
+        buttonF.setVisible(false);
+    }
+
+    private void buttonDigit (String symbol) {
+        if (poleString.equals("0")) {
+            poleString = symbol;
+        } else {
+            poleString = poleString + symbol;
+        }
+        textLabel.setText(poleString);
     }
 }
