@@ -2,10 +2,13 @@ package ru.avalon.vergentev.j120.labwork3c;
 import javax.swing.*;
 import java.awt.*;
 
+import static java.awt.GridBagConstraints.CENTER;
+
 public class ProgCalculator extends JFrame {
     String poleString = "0";
     JLabel textLabel = new JLabel(poleString, SwingConstants.RIGHT);
     JPanel panel = new JPanel(new GridLayout(4, 8));
+    JPanel rightPanel = new JPanel();
     JButton buttonEqual = new JButton("=");
     JButton buttonC = new JButton("C");
     JButton buttonD = new JButton("D");
@@ -40,16 +43,38 @@ public class ProgCalculator extends JFrame {
     JButton buttonAddition = new JButton("+");
     JButton buttonBIN = new JButton("bin");
 
+
     public ProgCalculator() throws HeadlessException {
         setTitle("Programmer's calculator");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(600, 800);
+        setSize(600, 500);
         setLocationRelativeTo(null);
         setResizable(true);
-        setLayout(new GridLayout(3, 1));
-        add(textLabel);
-        add(panel);
-        add(buttonEqual);
+        setLayout(new GridBagLayout());
+
+        GridBagConstraints textLabelPosition = new GridBagConstraints(0,0,0,1,1,1, CENTER,1, new Insets(0,0,0,0),0,40);
+        add(textLabel, textLabelPosition);
+        textLabel.setFont(new Font("Segoe UI", Font.BOLD, 45));
+
+        GridBagConstraints panelRightPosition = new GridBagConstraints(1,1,1,1,1,10, CENTER,1, new Insets(0,0,0,0),0,40);
+        add(rightPanel, panelRightPosition);
+        rightPanel.setLayout(new GridLayout(4, 1));
+        rightPanel.add(buttonHEX);
+        buttonHEX.addActionListener(e -> {buttonHEX();});
+        rightPanel.add(buttonDEC);
+        buttonDEC.addActionListener(e -> {buttonDEC();});
+        rightPanel.add(buttonOCT);
+        buttonOCT.addActionListener(e -> {buttonOCT();});
+        rightPanel.add(buttonBIN);
+        buttonBIN.addActionListener(e -> {buttonBIN();});
+
+        GridBagConstraints equalButtonPosition = new GridBagConstraints(0,2,0,1,1,1, CENTER,1, new Insets(0,0,0,0),0,40);
+        add(buttonEqual, equalButtonPosition);
+
+        GridBagConstraints panelPosition = new GridBagConstraints(0,1,1,1,10,10, CENTER,1, new Insets(0,0,0,0),0,40);
+        add(panel, panelPosition);
+        panel.setLayout(new GridLayout(4, 7));
+
         panel.add(buttonC);
         buttonC.addActionListener(e -> {buttonDigit("C");});
         panel.add(buttonD);
@@ -64,8 +89,6 @@ public class ProgCalculator extends JFrame {
         buttonXOR.addActionListener(e -> {buttonXOR();});
         panel.add(buttonDivision);
         buttonDivision.addActionListener(e -> {buttonDivision();});
-        panel.add(buttonHEX);
-        buttonHEX.addActionListener(e -> {buttonHEX();});
         panel.add(button8);
         button8.addActionListener(e -> {buttonDigit("8");});
         panel.add(button9);
@@ -80,8 +103,6 @@ public class ProgCalculator extends JFrame {
         buttonAND.addActionListener(e -> {buttonAND();});
         panel.add(buttonMultiplication);
         buttonMultiplication.addActionListener(e -> {buttonMultiplication();});
-        panel.add(buttonDEC);
-        buttonDEC.addActionListener(e -> {buttonDEC();});
         panel.add(button4);
         button4.addActionListener(e -> {buttonDigit("4");});
         panel.add(button5);
@@ -96,8 +117,6 @@ public class ProgCalculator extends JFrame {
         buttonOR.addActionListener(e -> {buttonOR();});
         panel.add(buttonSubtriction);
         buttonSubtriction.addActionListener(e -> {buttonSubtriction();});
-        panel.add(buttonOCT);
-        buttonOCT.addActionListener(e -> {buttonOCT();});
         panel.add(button0);
         button0.addActionListener(e -> {buttonDigit("0");});
         panel.add(button1);
@@ -112,8 +131,6 @@ public class ProgCalculator extends JFrame {
         buttonNOT.addActionListener(e -> {buttonNOT();});
         panel.add(buttonAddition);
         buttonAddition.addActionListener(e -> {buttonAddition();});
-        panel.add(buttonBIN);
-        buttonBIN.addActionListener(e -> {buttonBIN();});
     }
 
     private void buttonDigit (String symbol) {
